@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saneh Lata — AI/ML Engineer & Technical Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1923;
+  --teal: #1a6b72;
+  --teal-light: #2a9ba5;
+  --teal-pale: #e6f4f5;
+  --gold-pale: #fdf6e3;
+  --off-white: #f8f6f1;
+  --mid: #6b7280;
+  --border: #e2ddd5;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--off-white); color: var(--ink); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3rem;
+  background: rgba(248,246,241,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--teal); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--teal); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(26,107,114,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(200,168,75,0.06) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(26,107,114,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,107,114,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-left {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 3rem 4rem 5rem;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--teal);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;
+}
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  line-height: 1.08; color: var(--ink); margin-bottom: 1.25rem;
+}
+h1 em { font-style: italic; color: var(--teal); }
+.hero-desc {
+  font-size: 1rem; line-height: 1.8; color: var(--mid);
+  max-width: 460px; margin-bottom: 2rem;
+}
+.hero-desc strong { color: var(--ink); font-weight: 600; }
+.cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.7rem 1.4rem; font-family: var(--sans);
+  font-size: 0.85rem; font-weight: 600; text-decoration: none;
+  border-radius: 6px; transition: all 0.2s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--teal); color: white; box-shadow: 0 4px 14px rgba(26,107,114,0.3); }
+.btn-primary:hover { background: #155960; transform: translateY(-1px); }
+.btn-outline { border: 1.5px solid var(--teal); color: var(--teal); background: transparent; }
+.btn-outline:hover { background: var(--teal-pale); }
+.stats-row {
+  display: flex; gap: 2rem;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.stat-num { font-family: var(--serif); font-size: 1.9rem; color: var(--teal); display: block; line-height: 1; }
+.stat-label { font-size: 0.7rem; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 0.3rem; }
+
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 5rem 4rem 2rem;
+}
+.skills-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.75rem;
+  box-shadow: 0 8px 40px rgba(15,25,35,0.07);
+}
+.skills-card-top {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--mid);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 1.25rem; padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.skill-group { margin-bottom: 1.1rem; }
+.skill-group-label { font-size: 0.68rem; font-weight: 600; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.45rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.tag { font-size: 0.72rem; padding: 0.22rem 0.6rem; border-radius: 100px; font-weight: 500; }
+.tag-teal { background: var(--teal-pale); color: var(--teal); }
+.tag-gold { background: var(--gold-pale); color: #8a6d1a; }
+.tag-gray { background: #f1f0ee; color: #555; }
+.domain-badge {
+  margin-top: 1.25rem; padding: 0.8rem 1rem;
+  background: linear-gradient(135deg, var(--teal) 0%, #155960 100%);
+  border-radius: 10px; color: white; font-size: 0.78rem; line-height: 1.55;
+}
+.domain-badge strong { font-weight: 600; display: block; margin-bottom: 0.2rem; font-size: 0.82rem; }
+
+/* ── SECTION BASE ── */
+.section { padding: 5rem 5rem; }
+.section-white { background: white; }
+.section-off { background: var(--off-white); }
+.section-dark { background: var(--ink); color: white; }
+.section-label { font-family: var(--mono); font-size: 0.68rem; color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.section-dark .section-label { color: var(--teal-light); }
+.section-title { font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.15; margin-bottom: 0.8rem; }
+.section-sub { font-size: 0.95rem; color: var(--mid); max-width: 560px; line-height: 1.7; margin-bottom: 3rem; }
+.section-dark .section-sub { color: #9ca3af; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: start; }
+.about-text p { font-size: 0.95rem; line-height: 1.85; color: #374151; margin-bottom: 1.1rem; }
+.about-text p strong { color: var(--ink); }
+
+.timeline { position: relative; }
+.tl-item { display: flex; gap: 1rem; padding-bottom: 1.75rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 17px; top: 36px; bottom: 0; width: 1px; background: var(--border); }
+.tl-item:last-child::before { display: none; }
+.tl-dot { width: 36px; height: 36px; border-radius: 50%; background: var(--teal-pale); border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; }
+.tl-year { font-family: var(--mono); font-size: 0.68rem; color: var(--teal); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+.tl-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.2rem; color: var(--ink); }
+.tl-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
+
+/* ── PROJECTS ── */
+.proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.proj-card {
+  background: white; border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.proj-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(15,25,35,0.1); }
+.proj-card.featured { grid-column: span 2; }
+.proj-top { padding: 1.5rem 1.5rem 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.proj-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.proj-badge { font-family: var(--mono); font-size: 0.62rem; padding: 0.18rem 0.55rem; border-radius: 100px; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
+.proj-body { padding: 1rem 1.5rem; flex: 1; }
+.proj-title { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--ink); }
+.proj-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.9rem; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.stk { font-family: var(--mono); font-size: 0.65rem; background: #f1f0ee; color: #555; padding: 0.18rem 0.45rem; border-radius: 4px; }
+.proj-footer { padding: 0.9rem 1.5rem 1.25rem; border-top: 1px solid var(--border); display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.plink { font-size: 0.75rem; font-weight: 600; text-decoration: none; padding: 0.38rem 0.8rem; border-radius: 6px; display: flex; align-items: center; gap: 0.3rem; transition: all 0.2s; }
+.plink-demo { background: var(--teal); color: white; }
+.plink-demo:hover { background: #155960; }
+.plink-gh { background: #f1f0ee; color: var(--ink); border: 1px solid var(--border); }
+.plink-gh:hover { background: #e8e6e1; }
+.plink-vid { background: var(--gold-pale); color: #8a6d1a; border: 1px solid #e8d9a0; }
+.plink-vid:hover { background: #f5edd4; }
+
+/* ── EXPERIENCE ── */
+.exp-grid { display: grid; grid-template-columns: 260px 1fr; gap: 3.5rem; }
+.exp-nav { position: sticky; top: 90px; height: fit-content; }
+.exp-tab {
+  padding: 0.7rem 0.9rem; cursor: pointer; border-radius: 8px;
+  transition: all 0.2s; font-size: 0.85rem; color: var(--mid);
+  border-left: 2px solid transparent; margin-bottom: 0.2rem;
+}
+.exp-tab.active, .exp-tab:hover { background: var(--teal-pale); color: var(--teal); border-left-color: var(--teal); }
+.exp-tab-co { font-weight: 600; display: block; font-size: 0.88rem; }
+.exp-tab-dt { font-size: 0.7rem; font-family: var(--mono); opacity: 0.75; }
+.exp-panel { display: none; }
+.exp-panel.active { display: block; }
+.exp-role { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.25rem; }
+.exp-co { font-size: 0.95rem; color: var(--teal); font-weight: 500; margin-bottom: 0.15rem; }
+.exp-dt { font-family: var(--mono); font-size: 0.72rem; color: var(--mid); margin-bottom: 1.5rem; }
+.exp-list { list-style: none; margin-bottom: 1.75rem; }
+.exp-list li { font-size: 0.88rem; line-height: 1.7; color: #374151; padding: 0.55rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.7rem; align-items: flex-start; }
+.exp-list li::before { content: '▸'; color: var(--teal); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.15rem; }
+.metrics { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.chip { padding: 0.55rem 0.9rem; border-radius: 8px; background: var(--teal-pale); font-size: 0.78rem; }
+.chip strong { display: block; font-family: var(--serif); font-size: 1.25rem; color: var(--teal); line-height: 1; }
+.chip span { color: var(--mid); }
+
+/* ── CERTIFICATIONS ── */
+.certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.cert-card {
+  background: white; border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.75rem; text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cert-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(15,25,35,0.08); }
+.cert-logo { width: 90px; height: 90px; object-fit: contain; display: block; margin: 0 auto 1rem; }
+.cert-abbr { font-family: var(--mono); font-size: 0.78rem; color: var(--teal); font-weight: 600; margin-bottom: 0.3rem; }
+.cert-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
+.cert-body { font-size: 0.78rem; color: var(--mid); line-height: 1.55; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+.contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
+.clink {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+  text-decoration: none; color: white; transition: all 0.2s;
+}
+.clink:hover { background: rgba(26,107,114,0.25); border-color: var(--teal-light); }
+.clink-icon { font-size: 1.2rem; }
+.clink-label { font-size: 0.7rem; color: #9ca3af; display: block; margin-bottom: 0.1rem; }
+.clink-val { font-size: 0.88rem; font-weight: 500; }
+.avail-card {
+  background: linear-gradient(135deg, var(--teal) 0%, #155960 100%);
+  border-radius: 14px; padding: 1.75rem;
+}
+.avail-title { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.9rem; }
+.avail-row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; margin-bottom: 0.55rem; color: rgba(255,255,255,0.9); }
+.avail-dot { width: 7px; height: 7px; background: #7ee8a2; border-radius: 50%; flex-shrink: 0; }
+
+/* ── VIDEO MODAL ── */
+.modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+.modal.open { display: flex; }
+.modal-box { background: white; border-radius: 16px; padding: 2rem; width: min(560px, 90vw); position: relative; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: #f1f0ee; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 1rem; }
+.modal-title { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.4rem; }
+.modal-desc { font-size: 0.82rem; color: var(--mid); margin-bottom: 1.25rem; line-height: 1.6; }
+.vid-placeholder { background: var(--ink); border-radius: 10px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; gap: 0.6rem; }
+.vid-placeholder .play { font-size: 2.8rem; opacity: 0.6; }
+.vid-placeholder p { font-size: 0.78rem; opacity: 0.45; }
+
+/* ── PASSWORD GATE ── */
+#edit-toolbar { display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: none; flex-direction: column; align-items: flex-end; gap: 0.75rem; }
+#edit-toolbar.unlocked { display: flex; }
+#edit-fab { width: 52px; height: 52px; border-radius: 50%; background: var(--teal); color: white; border: none; font-size: 1.3rem; cursor: pointer; box-shadow: 0 4px 18px rgba(26,107,114,0.4); transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+#edit-fab:hover { background: #155960; transform: scale(1.05); }
+#edit-panel { display: none; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; width: 340px; box-shadow: 0 16px 48px rgba(15,25,35,0.15); }
+#edit-panel.open { display: block; }
+.ep-title { font-family: var(--serif); font-size: 1.05rem; margin-bottom: 0.3rem; }
+.ep-sub { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.9rem; line-height: 1.5; }
+#edit-box { width: 100%; padding: 0.7rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 0.82rem; resize: vertical; min-height: 85px; outline: none; transition: border-color 0.2s; }
+#edit-box:focus { border-color: var(--teal); }
+.ep-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.7rem 0; }
+.ep-chip { font-size: 0.68rem; padding: 0.22rem 0.55rem; background: var(--teal-pale); color: var(--teal); border-radius: 100px; cursor: pointer; border: none; font-family: var(--sans); transition: background 0.15s; }
+.ep-chip:hover { background: #c5e8ea; }
+#edit-go { width: 100%; padding: 0.7rem; background: var(--teal); color: white; border: none; border-radius: 8px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 0.4rem; }
+#edit-go:hover { background: #155960; }
+#edit-go:disabled { background: #9ca3af; cursor: not-allowed; }
+.ep-status { font-size: 0.73rem; color: var(--mid); margin-top: 0.45rem; min-height: 1.2em; text-align: center; }
+.ep-status.ok { color: #16a34a; }
+.ep-status.err { color: #dc2626; }
+.ep-thinking { display: none; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--teal); margin-top: 0.4rem; }
+.ep-thinking.show { display: flex; }
+.dots span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: dp 1.2s ease-in-out infinite; margin-right: 2px; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dp { 0%,80%,100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+
+#pw-overlay { display: none; position: fixed; inset: 0; z-index: 99998; background: rgba(15,25,35,0.75); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+#pw-overlay.open { display: flex; }
+#pw-box { background: white; border-radius: 16px; padding: 2rem; width: min(320px, 90vw); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+#pw-box h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.35rem; }
+#pw-box p { font-size: 0.78rem; color: var(--mid); margin-bottom: 1.1rem; line-height: 1.5; }
+#pw-in { width: 100%; padding: 0.65rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 0.88rem; outline: none; margin-bottom: 0.7rem; transition: border-color 0.2s; }
+#pw-in:focus { border-color: var(--teal); }
+#pw-ok { width: 100%; padding: 0.65rem; background: var(--teal); color: white; border: none; border-radius: 8px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; cursor: pointer; margin-bottom: 0.5rem; transition: background 0.2s; }
+#pw-ok:hover { background: #155960; }
+#pw-cancel { width: 100%; padding: 0.5rem; background: none; border: 1px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 0.78rem; color: var(--mid); cursor: pointer; transition: all 0.2s; }
+#pw-cancel:hover { background: #f1f0ee; }
+#pw-err { font-size: 0.75rem; color: #dc2626; margin-top: 0.4rem; min-height: 1em; text-align: center; }
+
+/* invisible unlock trigger — bottom-right corner */
+#unlock-zone { position: fixed; bottom: 0; right: 0; width: 50px; height: 50px; z-index: 9990; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 72px; }
+  .hero-left { padding: 3rem 1.5rem; }
+  .hero-right { display: none; }
+  .section { padding: 3.5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .proj-card.featured { grid-column: span 1; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-nav { position: static; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .certs-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  #edit-panel { width: calc(100vw - 3rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD OVERLAY -->
+<div id="pw-overlay">
+  <div id="pw-box">
+    <h3>🔒 Portfolio Editor</h3>
+    <p>Enter your password to unlock editing. Only you know this is here — visitors see nothing.</p>
+    <input type="password" id="pw-in" placeholder="Password…">
+    <button id="pw-ok" onclick="checkPw()">Unlock Editor</button>
+    <button id="pw-cancel" onclick="closePw()">Cancel</button>
+    <div id="pw-err"></div>
+  </div>
+</div>
+
+<!-- INVISIBLE UNLOCK ZONE (triple-click bottom-right corner) -->
+<div id="unlock-zone" onclick="unlockClick()"></div>
+
+<!-- EDIT TOOLBAR (hidden until unlocked) -->
+<div id="edit-toolbar">
+  <div id="edit-panel">
+    <div class="ep-title">✏️ Edit Your Portfolio</div>
+    <div class="ep-sub">Describe what to change in plain English. No coding needed.</div>
+    <textarea id="edit-box" placeholder="e.g. Add my Streamlit URL for the Repo project: https://...&#10;Or: Add LangChain to my Python skills&#10;Or: Update my phone number to +1 555 000 0000"></textarea>
+    <div class="ep-chips">
+      <button class="ep-chip" onclick="fillChip('Add Streamlit live demo URL for a project')">Add Streamlit link</button>
+      <button class="ep-chip" onclick="fillChip('Add YouTube video URL for a project')">Add video URL</button>
+      <button class="ep-chip" onclick="fillChip('Add a new skill tag to Python & Data group')">Add skill tag</button>
+      <button class="ep-chip" onclick="fillChip('Update my phone number to')">Update phone</button>
+      <button class="ep-chip" onclick="fillChip('Add a new project card called')">Add project</button>
+    </div>
+    <button id="edit-go" onclick="doEdit()">Apply with AI ✨</button>
+    <div class="ep-thinking" id="ep-thinking"><div class="dots"><span></span><span></span><span></span></div> AI is editing…</div>
+    <div class="ep-status" id="ep-status"></div>
+  </div>
+  <button id="edit-fab" onclick="toggleEditPanel()" title="Edit portfolio">✏️</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Saneh Lata</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-left">
+    <p class="eyebrow">// AI Engineer &amp; Technical Leader — Chicago, IL</p>
+    <h1>Where <em>banking expertise</em><br>meets machine intelligence</h1>
+    <p class="hero-desc">
+      <strong>19 years</strong> leading engineering teams at NatWest Markets — now building AI systems in Python, ML, Deep Learning, and Generative AI. I don't just understand the models. I understand the business problems they solve.
+    </p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">▶ &nbsp;View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="stats-row">
+      <div><span class="stat-num">19+</span><span class="stat-label">Years in FinTech</span></div>
+      <div><span class="stat-num">£21M</span><span class="stat-label">Cost Savings Led</span></div>
+      <div><span class="stat-num">7</span><span class="stat-label">AI/ML Projects</span></div>
+      <div><span class="stat-num">40+</span><span class="stat-label">Engineers Mentored</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="skills-card">
+      <div class="skills-card-top">// Current Tech Stack</div>
+      <div class="skill-group">
+        <div class="skill-group-label">AI / ML</div>
+        <div class="tags">
+          <span class="tag tag-teal">Machine Learning</span>
+          <span class="tag tag-teal">Deep Learning</span>
+          <span class="tag tag-teal">NLP</span>
+          <span class="tag tag-teal">Generative AI</span>
+          <span class="tag tag-teal">Agentic AI</span>
+          <span class="tag tag-teal">LLMs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Python &amp; Data</div>
+        <div class="tags">
+          <span class="tag tag-gray">Python</span>
+          <span class="tag tag-gray">Scikit-learn</span>
+          <span class="tag tag-gray">TensorFlow</span>
+          <span class="tag tag-gray">Pandas</span>
+          <span class="tag tag-gray">SHAP</span>
+          <span class="tag tag-gray">MLflow</span>
+          <span class="tag tag-gray">Streamlit</span>
+          <span class="tag tag-gray">FastAPI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Domain Expertise</div>
+        <div class="tags">
+          <span class="tag tag-gold">Repos &amp; Fixed Income</span>
+          <span class="tag tag-gold">Trade Lifecycle</span>
+          <span class="tag tag-gold">Regulatory Compliance</span>
+          <span class="tag tag-gold">Risk Management</span>
+        </div>
+      </div>
+      <div class="domain-badge">
+        <strong>💡 Unique Edge</strong>
+        My AI projects are built on real trading domain knowledge — not just tutorial datasets. I've lived the problems I'm now solving with ML.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section-white">
+  <div class="section-label">// 01. About</div>
+  <h2 class="section-title">A career built on<br>depth, not breadth</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I started my career as a <strong>Java and database developer</strong>, writing APIs, optimising PL/SQL, and building document management systems for BFSI clients. Code was where I began.</p>
+      <p>Over 19 years at NatWest Markets, I grew into a <strong>Global Development Manager</strong> leading 40+ engineers across India, UK, US, and Asia — delivering trading systems for Bonds, Repos, Futures, and Credit. I led the £21M Repos platform transformation, drove 10+ regulatory compliance programs, and achieved 99% system resilience.</p>
+      <p>In April 2025, I relocated to <strong>Chicago</strong> when my husband's organisation brought us here. I used that transition deliberately — enrolling in an intensive AI Engineer &amp; Data Scientist bootcamp covering machine learning, deep learning, NLP, generative AI, and agentic AI.</p>
+      <p>I'm now looking for <strong>remote or hybrid roles</strong> where I can apply both sides of my background: building AI systems that work in the real world, or leading teams that do. I hold a <strong>PMP, CSM, and CSPO</strong>.</p>
+      <a href="Saneh_Lata_Resume_US_2025.docx" download class="btn btn-outline" style="margin-top:1.5rem;">↓ &nbsp;Download Resume</a>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">🧑‍💻</div>
+        <div>
+          <div class="tl-year">2005 — 2010</div>
+          <div class="tl-title">Java Developer → Senior Developer</div>
+          <div class="tl-desc">Newgen Software — BFSI document management, Core Java, Oracle/SQL Server, PL/SQL</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🏦</div>
+        <div>
+          <div class="tl-year">2010 — 2015</div>
+          <div class="tl-title">Software Designer</div>
+          <div class="tl-desc">NatWest (RBS) — Algorithmics Collateral Management, OTC derivatives, Repos, risk optimisation</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🌍</div>
+        <div>
+          <div class="tl-year">2015 — 2025</div>
+          <div class="tl-title">Development Manager → Global Dev Manager</div>
+          <div class="tl-desc">NatWest Markets — 40+ engineers, £21M transformation, 10+ regulatory programs, global delivery</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">✈️</div>
+        <div>
+          <div class="tl-year">Apr 2025</div>
+          <div class="tl-title">Relocated to Chicago, USA</div>
+          <div class="tl-desc">Enrolled in AI Engineer &amp; Data Scientist bootcamp — ML, DL, NLP, GenAI, Agentic AI</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🤖</div>
+        <div>
+          <div class="tl-year">2025 — Now</div>
+          <div class="tl-title">AI Engineer — Open to Opportunities</div>
+          <div class="tl-desc">5 deployed AI/ML projects on GitHub + Streamlit. Seeking remote/hybrid roles in Chicago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section section-off">
+  <div class="section-label">// 02. Projects</div>
+  <h2 class="section-title">AI built on real<br>domain knowledge</h2>
+  <p class="section-sub">All projects deployed live on Streamlit Community Cloud with full source code on GitHub. Each solves a real problem from my banking career.</p>
+  <div class="proj-grid">
+
+    <!-- FLAGSHIP -->
+    <div class="proj-card featured">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#e6f4f5;">🏦</div>
+        <span class="proj-badge" style="background:#e6f4f5;color:#1a6b72;">★ FLAGSHIP PROJECT</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Repo Trading Settlement Risk Predictor</h3>
+        <p class="proj-desc">A front-office AI system predicting Repo settlement risk using interpretable ML — built on 10+ years of NatWest trading domain expertise. Features SHAP explainability so traders understand <em>why</em> a trade is flagged, KS/Gini validation metrics, and real-time FastAPI deployment.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">XGBoost</span><span class="stk">SHAP</span><span class="stk">FastAPI</span><span class="stk">Streamlit</span><span class="stk">KS/Gini</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/ml-repo-trading-settlement-risk-prediction" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/ml-repo-trading-settlement-risk-prediction" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('repo');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+    <!-- MLFLOW -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#fdf6e3;">📊</div>
+        <span class="proj-badge" style="background:#fdf6e3;color:#8a6d1a;">MLOPS</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">ML Experiment Tracking with MLflow</h3>
+        <p class="proj-desc">Production-grade experiment tracking publishing model metrics, parameters, and artifacts to DagsHub. Demonstrates ML reproducibility and engineering discipline beyond just building models.</p>
+        <div class="proj-stack"><span class="stk">MLflow</span><span class="stk">DagsHub</span><span class="stk">Jupyter</span><span class="stk">Python</span></div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/mlflow_repo" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+      </div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#fdf6e3;">💳</div>
+        <span class="proj-badge" style="background:#fdf6e3;color:#8a6d1a;">ML · FINTECH</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Credit Scoring &amp; Loan Default Prediction</h3>
+        <p class="proj-desc">ML model predicting loan default risk to support approve/reject decisions. Interpretable output designed for risk officer review — not a black box.</p>
+        <div class="proj-stack"><span class="stk">Python</span><span class="stk">Scikit-learn</span><span class="stk">Streamlit</span><span class="stk">Pandas</span></div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/ml-project-credit-scoring-model" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/ml-project-credit-scoring-model" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('credit');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+    <!-- HEALTHCARE -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#f0fdf4;">🏥</div>
+        <span class="proj-badge" style="background:#f0fdf4;color:#166534;">ML · HEALTHCARE</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Healthcare Insurance Premium Prediction</h3>
+        <p class="proj-desc">End-to-end ML pipeline predicting annual health insurance premiums from health, lifestyle, and demographic data. Full workflow: EDA → feature engineering → model selection → Streamlit deployment.</p>
+        <div class="proj-stack"><span class="stk">Python</span><span class="stk">Scikit-learn</span><span class="stk">Streamlit</span><span class="stk">EDA</span></div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/ml-project-healthcare-premium-prediction" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/ml-project-healthcare-premium-prediction" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('health');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+    <!-- VEHICLE -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#eff6ff;">🚗</div>
+        <span class="proj-badge" style="background:#eff6ff;color:#1e40af;">DEEP LEARNING · CV</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Vehicle Damage Detection</h3>
+        <p class="proj-desc">Computer vision model detecting and classifying vehicle damage from images using CNN + ResNet transfer learning. Upload a photo, get instant damage classification via Streamlit.</p>
+        <div class="proj-stack"><span class="stk">Python</span><span class="stk">TensorFlow</span><span class="stk">ResNet</span><span class="stk">CNN</span><span class="stk">Streamlit</span></div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/dl-vehicle-damage-detection" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/dl-vehicle-damage-detection" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('vehicle');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+    <!-- SHOPASSIST GENAI CHATBOT -->
+    <div class="proj-card featured">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#fdf4ff;">🛍️</div>
+        <span class="proj-badge" style="background:#fdf4ff;color:#7e22ce;">GEN AI · CHATBOT</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">ShopAssist — Gen AI E-Commerce Chatbot</h3>
+        <p class="proj-desc">Intelligent e-commerce chatbot powered by a semantic routing architecture that analyses user intent and dynamically routes queries to the right pipeline — small talk, FAQ, or product search. Built with Groq LLaMA 3, HuggingFace embeddings, SQLite, and deployed live on Streamlit. The same architecture is directly reusable for internal developer portals, IT helpdesks, and incident management systems.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">Groq LLaMA 3</span><span class="stk">Semantic Router</span><span class="stk">HuggingFace</span><span class="stk">SQLite</span><span class="stk">Streamlit</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://shop-assist-gen-ai-chatbot.streamlit.app" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/ShopAssist_GenAIChatbot" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('shop');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+    <!-- WEB INTEL AI RAG -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#f0f9ff;">🔍</div>
+        <span class="proj-badge" style="background:#f0f9ff;color:#0369a1;">GEN AI · RAG</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Web Intel AI — RAG Application</h3>
+        <p class="proj-desc">RAG app that scrapes any web URL, chunks and embeds the content into ChromaDB, then answers natural language questions using Groq LLaMA 3 with source-cited responses. Full ingestion and query pipelines with enterprise architecture documentation.</p>
+        <div class="proj-stack"><span class="stk">LangChain</span><span class="stk">ChromaDB</span><span class="stk">Groq LLaMA 3</span><span class="stk">HuggingFace</span><span class="stk">Streamlit</span></div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://webintelairag-genai-project.streamlit.app/" target="_blank" class="plink plink-demo">▶ Live Demo</a>
+        <a href="https://github.com/SanehLata/Web_Intel_AI_RAG" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="openVid('rag');return false;">🎬 Watch Video</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section section-white">
+  <div class="section-label">// 03. Experience</div>
+  <h2 class="section-title">19 years of delivery<br>at global scale</h2>
+  <p class="section-sub">From hands-on developer to global development manager — always close to the code, always close to the business.</p>
+  <div class="exp-grid">
+    <div class="exp-nav">
+      <div class="exp-tab active" onclick="showExp('nw2',this)">
+        <span class="exp-tab-co">NatWest Markets</span>
+        <span class="exp-tab-dt">2015 – 2025</span>
+      </div>
+      <div class="exp-tab" onclick="showExp('nw1',this)">
+        <span class="exp-tab-co">NatWest (RBS)</span>
+        <span class="exp-tab-dt">2010 – 2015</span>
+      </div>
+      <div class="exp-tab" onclick="showExp('ng',this)">
+        <span class="exp-tab-co">Newgen Software</span>
+        <span class="exp-tab-dt">2005 – 2010</span>
+      </div>
+    </div>
+    <div>
+      <div class="exp-panel active" id="exp-nw2">
+        <div class="exp-role">Global Development Manager</div>
+        <div class="exp-co">NatWest Markets (Royal Bank of Scotland)</div>
+        <div class="exp-dt">April 2015 – April 2025 · India</div>
+        <ul class="exp-list">
+          <li>Led global development for Front Office Trading Systems — Bonds, Repos, Futures, Credit — managing 4 Agile squads of 40+ engineers across India, UK, US and Asia</li>
+          <li>Directed £21M licensing cost-saving Repos platform transformation (Anvil → in-house) across London, Washington, Tokyo and Singapore</li>
+          <li>Delivered 10+ cross-asset regulatory programs with 100% compliance: SFTR, EMIR, MiFID II, DTCC, CSDR, MAS, CFTC, Canada Rewrite</li>
+          <li>Achieved 99% system resilience and reduced regression testing by 90% through QA automation and CI/CD embedding</li>
+          <li>Led NWM Brexit Program: end-to-end business design, regulatory compliance, client communications, and operational readiness</li>
+          <li>Mentored and coached 40+ globally distributed engineers, aligning individual goals with organisational strategy</li>
+        </ul>
+        <div class="metrics">
+          <div class="chip"><strong>£21M</strong><span>Cost savings</span></div>
+          <div class="chip"><strong>99%</strong><span>System resilience</span></div>
+          <div class="chip"><strong>90%</strong><span>Test effort reduced</span></div>
+          <div class="chip"><strong>10+</strong><span>Regulatory programs</span></div>
+          <div class="chip"><strong>40+</strong><span>Engineers managed</span></div>
+        </div>
+      </div>
+      <div class="exp-panel" id="exp-nw1">
+        <div class="exp-role">Software Designer</div>
+        <div class="exp-co">NatWest (Royal Bank of Scotland)</div>
+        <div class="exp-dt">March 2010 – March 2015 · India</div>
+        <ul class="exp-list">
+          <li>Delivered solutions for Algorithmics Collateral Management across OTC derivatives, repos, and securities lending</li>
+          <li>Optimised credit and market risk processes collaborating with Business, Middle Office, and Operations teams</li>
+          <li>Owned end-to-end delivery from requirements through implementation, progressively taking on larger cross-functional initiatives</li>
+        </ul>
+      </div>
+      <div class="exp-panel" id="exp-ng">
+        <div class="exp-role">Senior Developer</div>
+        <div class="exp-co">Newgen Software Technologies</div>
+        <div class="exp-dt">August 2005 – February 2010 · India</div>
+        <ul class="exp-list">
+          <li>Developed and maintained OmniDocs Document &amp; Record Management System for major BFSI multinational clients</li>
+          <li>Led VERS (Victorian Electronic Record System) Compliance project, driving client satisfaction and system reliability</li>
+          <li>Designed Core Java APIs using JDBC to parse XML inputs; optimised PL/SQL across Oracle, SQL Server, and PostgreSQL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section section-off">
+  <div class="section-label">// 04. Certifications</div>
+  <h2 class="section-title">Credentialed across<br>delivery &amp; engineering</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <img class="cert-logo" src="https://images.credly.com/images/731e7ef4-9b0c-4d7b-ab65-23cc699c0aa3/blob" alt="PMP Badge" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-size:2.5rem;">📋</span>
+      <div class="cert-abbr">PMP</div>
+      <div class="cert-name">Project Management Professional</div>
+      <div class="cert-body">PMI's gold-standard certification for project delivery, risk management, and stakeholder leadership across complex programmes.</div>
+    </div>
+    <div class="cert-card">
+      <img class="cert-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY3NtR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDg5N0IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA0RDQwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIE91dGVyIHJpbmcgLS0+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5NiIgZmlsbD0idXJsKCNjc21HcmFkKSIgc3Ryb2tlPSIjODBDQkM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8IS0tIElubmVyIHdoaXRlIHJpbmcgLS0+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwhLS0gU0EgbW9ub2dyYW0gdG9wIC0tPgogIDx0ZXh0IHg9IjEwMCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjgpIiBsZXR0ZXItc3BhY2luZz0iMyI+U0NSVU0gQUxMSUFOQ0U8L3RleHQ+CiAgPCEtLSBCaWcgQ1NNIGxldHRlcnMgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSIxMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkNTTTwvdGV4dD4KICA8IS0tIEJvdHRvbSB0ZXh0IC0tPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQ4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOS41IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOSkiIGxldHRlci1zcGFjaW5nPSIxIj5DRVJUSUZJRUQgU0NSVU1NQVNURVI8L3RleHQ+CiAgPCEtLSBEZWNvcmF0aXZlIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIzOCIgeTE9IjEzMCIgeDI9IjY4IiB5Mj0iMTMwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGxpbmUgeDE9IjEzMiIgeTE9IjEzMCIgeDI9IjE2MiIgeTI9IjEzMCIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNCkiIHN0cm9rZS13aWR0aD0iMSIvPgogIDwhLS0gU3RhciBkZWNvcmF0aW9ucyAtLT4KICA8dGV4dCB4PSIxMDAiIHk9IjE3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNikiPuKcpiDinKYg4pymPC90ZXh0Pgo8L3N2Zz4=" alt="CSM Badge">
+      <span style="display:none;font-size:2.5rem;">🔄</span>
+      <div class="cert-abbr">CSM</div>
+      <div class="cert-name">Certified ScrumMaster</div>
+      <div class="cert-body">Scrum Alliance certification — facilitating Agile teams, removing impediments, and coaching continuous delivery improvement.</div>
+    </div>
+    <div class="cert-card">
+      <img class="cert-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY3Nwb0dyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNUUzNUIxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzMxMUI5MiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBPdXRlciByaW5nIC0tPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iOTYiIGZpbGw9InVybCgjY3Nwb0dyYWQpIiBzdHJva2U9IiNCMzlEREIiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwhLS0gSW5uZXIgd2hpdGUgcmluZyAtLT4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjgwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4zKSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPCEtLSBTQSBtb25vZ3JhbSB0b3AgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGxldHRlci1zcGFjaW5nPSIzIj5TQ1JVTSBBTExJQU5DRTwvdGV4dD4KICA8IS0tIEJpZyBDU1BPIGxldHRlcnMgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSIxMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkNTUE88L3RleHQ+CiAgPCEtLSBCb3R0b20gdGV4dCAtLT4KICA8dGV4dCB4PSIxMDAiIHk9IjE0OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjguNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjkpIiBsZXR0ZXItc3BhY2luZz0iMC41Ij5DRVJUSUZJRUQgU0NSVU0gUFJPRFVDVCBPV05FUjwvdGV4dD4KICA8IS0tIERlY29yYXRpdmUgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjM4IiB5MT0iMTMwIiB4Mj0iNjIiIHkyPSIxMzAiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8bGluZSB4MT0iMTM4IiB5MT0iMTMwIiB4Mj0iMTYyIiB5Mj0iMTMwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPCEtLSBTdGFyIGRlY29yYXRpb25zIC0tPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42KSI+4pymIOKcpiDinKY8L3RleHQ+Cjwvc3ZnPg==" alt="CSPO Badge">
+      <span style="display:none;font-size:2.5rem;">🎯</span>
+      <div class="cert-abbr">CSPO</div>
+      <div class="cert-name">Certified Scrum Product Owner</div>
+      <div class="cert-body">Backlog prioritisation, stakeholder alignment, and value-driven product delivery within Agile and SAFe frameworks.</div>
+    </div>
+    <div class="cert-card">
+      <img class="cert-logo" src="https://images.credly.com/images/3e987079-3013-4359-9ad3-578c0b864e3d/image.png" alt="SAFe 6 Agilist Badge" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-size:2.5rem;">🚀</span>
+      <div class="cert-abbr">SAFe® 6 Agilist</div>
+      <div class="cert-name">Certified SAFe® 6 Agilist</div>
+      <div class="cert-body">Scaled Agile Framework certification — leading Lean-Agile transformations, PI Planning, and enterprise-wide Agile delivery at scale. Verified on Credly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-dark">
+  <div class="section-label">// 05. Contact</div>
+  <h2 class="section-title">Let's build something<br>together</h2>
+  <p class="section-sub">Open to remote or hybrid roles in AI/ML engineering, technical program management, or AI-focused delivery leadership. Based in Chicago — available nationwide.</p>
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="mailto:latasaneh@gmail.com" class="clink">
+        <span class="clink-icon">✉️</span>
+        <div><span class="clink-label">Email</span><span class="clink-val">latasaneh@gmail.com</span></div>
+      </a>
+      <a href="tel:+13314318065" class="clink">
+        <span class="clink-icon">📞</span>
+        <div><span class="clink-label">Phone</span><span class="clink-val">+1 (331) 431-8065</span></div>
+      </a>
+      <a href="https://www.linkedin.com/in/saneh-lata-bab9a51/" target="_blank" class="clink">
+        <span class="clink-icon">💼</span>
+        <div><span class="clink-label">LinkedIn</span><span class="clink-val">linkedin.com/in/saneh-lata-bab9a51</span></div>
+      </a>
+      <a href="https://github.com/SanehLata" target="_blank" class="clink">
+        <span class="clink-icon">⚡</span>
+        <div><span class="clink-label">GitHub</span><span class="clink-val">github.com/SanehLata</span></div>
+      </a>
+    </div>
+    <div class="avail-card">
+      <div class="avail-title">Currently Available</div>
+      <div class="avail-row"><div class="avail-dot"></div>Open to full-time roles</div>
+      <div class="avail-row"><div class="avail-dot"></div>Remote or 1–2 day hybrid (Chicago preferred)</div>
+      <div class="avail-row"><div class="avail-dot"></div>AI/ML Engineering, Technical Program Management</div>
+      <div class="avail-row"><div class="avail-dot"></div>Banking, FinTech, or enterprise AI teams</div>
+      <div class="avail-row"><div class="avail-dot"></div>Visa sponsorship required</div>
+      <a href="Saneh_Lata_Resume_US_2025.docx" download class="btn" style="margin-top:1.5rem;background:white;color:#1a6b72;font-size:0.82rem;">↓ &nbsp;Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="vidModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVid()">✕</button>
+    <div class="modal-title" id="vid-title"></div>
+    <div class="modal-desc" id="vid-desc"></div>
+    <div id="vid-embed">
+      <div class="vid-placeholder"><div class="play">▶</div><p>Video coming soon — recording in progress</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── VIDEO MODAL ──
+const vidData = {
+  repo:   { title:'Repo Trading Settlement Risk Predictor', desc:'ML system predicting settlement risk using XGBoost + SHAP — built on 10+ years of NatWest trading domain expertise.', url:'' },
+  credit: { title:'Credit Scoring & Loan Default Prediction', desc:'End-to-end walkthrough: EDA, feature engineering, model training, and the live Streamlit approve/reject app.', url:'' },
+  health: { title:'Healthcare Insurance Premium Prediction', desc:'Full ML pipeline from raw data through EDA, feature engineering, model selection, and Streamlit deployment.', url:'' },
+  vehicle:{ title:'Vehicle Damage Detection (Deep Learning)', desc:'CNN + ResNet transfer learning — upload any vehicle image and get instant damage classification.', url:'' },
+  shop:   { title:'ShopAssist — Gen AI E-Commerce Chatbot', desc:'Semantic routing chatbot demo: watch it intelligently route small talk, FAQ queries, and product search requests to the right pipeline in real time.', url:'' },
+  rag:    { title:'Web Intel AI — RAG Application', desc:'Full walkthrough: paste a URL, watch the ingestion pipeline chunk and embed it, then ask natural language questions and get cited answers from the content.', url:'' }
+};
+function openVid(k) {
+  const v = vidData[k];
+  document.getElementById('vid-title').textContent = v.title;
+  document.getElementById('vid-desc').textContent  = v.desc;
+  const el = document.getElementById('vid-embed');
+  if (v.url) {
+    if (v.url.includes('youtu')) {
+      const id = v.url.includes('youtu.be') ? v.url.split('/').pop().split('?')[0] : new URL(v.url).searchParams.get('v');
+      el.innerHTML = `<iframe width="100%" style="aspect-ratio:16/9;border-radius:10px;border:none" src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>`;
+    } else if (v.url.includes('loom.com')) {
+      const id = v.url.split('/').pop().split('?')[0];
+      el.innerHTML = `<iframe width="100%" style="aspect-ratio:16/9;border-radius:10px;border:none" src="https://www.loom.com/embed/${id}" allowfullscreen></iframe>`;
+    } else {
+      el.innerHTML = `<video width="100%" style="border-radius:10px" controls><source src="${v.url}"></video>`;
+    }
+  } else {
+    el.innerHTML = `<div class="vid-placeholder"><div class="play">▶</div><p>Video coming soon — recording in progress</p></div>`;
+  }
+  document.getElementById('vidModal').classList.add('open');
+}
+function closeVid() {
+  document.getElementById('vidModal').classList.remove('open');
+  document.getElementById('vid-embed').innerHTML = '';
+}
+document.getElementById('vidModal').addEventListener('click', e => { if (e.target.id === 'vidModal') closeVid(); });
+
+// ── EXPERIENCE TABS ──
+function showExp(id, el) {
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('exp-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── PASSWORD + EDIT ──
+const PW = 'saneh2025'; // ← change this before publishing!
+let clicks = 0, clickTimer;
+
+function unlockClick() {
+  clicks++;
+  clearTimeout(clickTimer);
+  clickTimer = setTimeout(() => { clicks = 0; }, 700);
+  if (clicks >= 3) { clicks = 0; openPw(); }
+}
+function openPw() {
+  document.getElementById('pw-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('pw-in').focus(), 80);
+}
+function closePw() {
+  document.getElementById('pw-overlay').classList.remove('open');
+  document.getElementById('pw-in').value = '';
+  document.getElementById('pw-err').textContent = '';
+}
+function checkPw() {
+  if (document.getElementById('pw-in').value === PW) {
+    closePw();
+    document.getElementById('edit-toolbar').classList.add('unlocked');
+    document.getElementById('edit-panel').classList.add('open');
+  } else {
+    document.getElementById('pw-err').textContent = '✗ Wrong password.';
+    document.getElementById('pw-in').value = '';
+    document.getElementById('pw-in').focus();
+  }
+}
+document.getElementById('pw-in').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkPw();
+  if (e.key === 'Escape') closePw();
+});
+
+function toggleEditPanel() { document.getElementById('edit-panel').classList.toggle('open'); }
+function fillChip(t) { document.getElementById('edit-box').value = t; }
+
+async function doEdit() {
+  const instr = document.getElementById('edit-box').value.trim();
+  if (!instr) return;
+  const btn = document.getElementById('edit-go');
+  const status = document.getElementById('ep-status');
+  const thinking = document.getElementById('ep-thinking');
+  btn.disabled = true; status.textContent = ''; status.className = 'ep-status';
+  thinking.classList.add('show');
+  try {
+    const html = document.documentElement.outerHTML;
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `You are an HTML editor. Return ONLY a JSON object with these fields:
+- "selector": precise CSS selector of element to change
+- "action": one of "innerHTML", "textContent", "setAttribute", "insertAdjacentHTML"  
+- "value": new content
+- "attribute": (only for setAttribute) the attribute name
+- "position": (only for insertAdjacentHTML) e.g. "beforeend"
+Return pure JSON only — no markdown, no explanation.`,
+        messages: [{ role: 'user', content: `Page HTML (first 10000 chars):\n${html.substring(0,10000)}\n\nInstruction: ${instr}` }]
+      })
+    });
+    const data = await res.json();
+    const text = (data.content||[]).map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+    const op = JSON.parse(text);
+    const el = document.querySelector(op.selector);
+    if (!el) throw new Error(`Element not found: ${op.selector}`);
+    if (op.action === 'innerHTML') el.innerHTML = op.value;
+    else if (op.action === 'textContent') el.textContent = op.value;
+    else if (op.action === 'setAttribute') el.setAttribute(op.attribute, op.value);
+    else if (op.action === 'insertAdjacentHTML') el.insertAdjacentHTML(op.position||'beforeend', op.value);
+    status.textContent = '✓ Done! Press Ctrl+S to save.';
+    status.className = 'ep-status ok';
+    document.getElementById('edit-box').value = '';
+  } catch(e) {
+    status.textContent = '✗ ' + (e.message || 'Error. Try rephrasing.');
+    status.className = 'ep-status err';
+  } finally {
+    btn.disabled = false;
+    thinking.classList.remove('show');
+  }
+}
+document.getElementById('edit-box').addEventListener('keydown', e => { if (e.ctrlKey && e.key==='Enter') doEdit(); });
+</script>
+</body>
+</html>
