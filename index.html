@@ -878,6 +878,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
 // ── EXPERIENCE TABS ──
 function showExp(id, el) {
   document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
@@ -887,7 +888,7 @@ function showExp(id, el) {
 }
 
 // ── PASSWORD + EDIT ──
-const PW = 'saneh2025'; // ← change this before publishing!
+const PW = 'saneh2025';
 let clicks = 0, clickTimer;
 
 function unlockClick() {
@@ -916,9 +917,14 @@ function checkPw() {
     document.getElementById('pw-in').focus();
   }
 }
-document.getElementById('pw-in').addEventListener('keydown', e => {
-  if (e.key === 'Enter') checkPw();
-  if (e.key === 'Escape') closePw();
+document.addEventListener('DOMContentLoaded', function() {
+  var pwIn = document.getElementById('pw-in');
+  if (pwIn) {
+    pwIn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPw();
+      if (e.key === 'Escape') closePw();
+    });
+  }
 });
 
 function toggleEditPanel() { document.getElementById('edit-panel').classList.toggle('open'); }
@@ -940,28 +946,30 @@ async function doEdit() {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
-        system: `You are an HTML editor. Return ONLY a JSON object with these fields:
-- "selector": precise CSS selector of element to change
-- "action": one of "innerHTML", "textContent", "setAttribute", "insertAdjacentHTML"  
-- "value": new content
-- "attribute": (only for setAttribute) the attribute name
-- "position": (only for insertAdjacentHTML) e.g. "beforeend"
-Return pure JSON only — no markdown, no explanation.`,
-        messages: [{ role: 'user', content: `Page HTML (first 10000 chars):\n${html.substring(0,10000)}\n\nInstruction: ${instr}` }]
+        system: 'You are an HTML editor. Return ONLY a JSON object with these fields:\n- "selector": precise CSS selector of element to change\n- "action": one of "innerHTML", "textContent", "setAttribute", "insertAdjacentHTML"\n- "value": new content\n- "attribute": (only for setAttribute) the attribute name\n- "position": (only for insertAdjacentHTML) e.g. "beforeend"\nReturn pure JSON only — no markdown, no explanation.',
+        messages: [{ role: 'user', content: 'Page HTML (first 10000 chars):\n' + html.substring(0,10000) + '\n\nInstruction: ' + instr }]
       })
     });
     const data = await res.json();
-    const text = (data.content||[]).map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+    const text = (data.content||[]).map(function(c){return c.text||'';}).join('').replace(/```json|```/g,'').trim();
     const op = JSON.parse(text);
     const el = document.querySelector(op.selector);
-    if (!el) throw new Error(`Element not found: ${op.selector}`);
+    if (!el) throw new Error('Element not found: ' + op.selector);
     if (op.action === 'innerHTML') el.innerHTML = op.value;
     else if (op.action === 'textContent') el.textContent = op.value;
     else if (op.action === 'setAttribute') el.setAttribute(op.attribute, op.value);
     else if (op.action === 'insertAdjacentHTML') el.insertAdjacentHTML(op.position||'beforeend', op.value);
-    status.textContent = '✓ Done! Press Ctrl+S to save.';
+    status.textContent = '✓ Done!';
     status.className = 'ep-status ok';
     document.getElementById('edit-box').value = '';
   } catch(e) {
     status.textContent = '✗ ' + (e.message || 'Error. Try rephrasing.');
-    status.className = 'ep-
+    status.className = 'ep-status err';
+  } finally {
+    btn.disabled = false;
+    thinking.classList.remove('show');
+  }
+}
+</script>
+</body>
+</html>
