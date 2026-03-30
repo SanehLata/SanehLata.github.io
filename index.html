@@ -100,8 +100,19 @@ h1 em { font-style: italic; color: var(--teal); }
 
 .hero-right {
   position: relative; z-index: 1;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: center; gap: 1.25rem;
   padding: 4rem 5rem 4rem 2rem;
+}
+.intro-vid-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.25rem;
+  box-shadow: 0 8px 40px rgba(15,25,35,0.07);
+}
+.intro-vid-label {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--mid);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.9rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
 }
 .skills-card {
   background: white; border: 1px solid var(--border);
@@ -309,6 +320,12 @@ h1 em { font-style: italic; color: var(--teal); }
   #edit-panel { width: calc(100vw - 3rem); }
 }
 </style>
+<!-- Preload video thumbnails so modal opens instantly -->
+<link rel="preload" as="image" href="https://img.youtube.com/vi/xvcjnNP_L8k/hqdefault.jpg">
+<link rel="preload" as="image" href="https://img.youtube.com/vi/DdEllaRWPAA/hqdefault.jpg">
+<link rel="preload" as="image" href="https://img.youtube.com/vi/68Am9ThgGdw/hqdefault.jpg">
+<!-- Fix YouTube Error 153: ensure referrer header is sent with embeds -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body>
 
@@ -402,7 +419,7 @@ h1 em { font-style: italic; color: var(--teal); }
           <span class="tag tag-gray">TensorFlow</span>
           <span class="tag tag-gray">Pandas</span>
           <span class="tag tag-gray">SHAP</span>
-          <span class="tag tag-gray">MLflow</span>
+          <span class="tag tag-gray">LangGraph</span>
           <span class="tag tag-gray">Streamlit</span>
           <span class="tag tag-gray">FastAPI</span>
         </div>
@@ -421,6 +438,22 @@ h1 em { font-style: italic; color: var(--teal); }
         My AI projects are built on real trading domain knowledge — not just tutorial datasets. I've lived the problems I'm now solving with ML.
       </div>
     </div>
+
+    <!-- INTRO VIDEO -->
+    <div class="intro-vid-card">
+      <div class="intro-vid-label">// Meet Saneh — 2 min intro</div>
+      <div class="intro-vid-wrap" style="position:relative;border-radius:10px;overflow:hidden;background:#0f1923;aspect-ratio:16/9;">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/68Am9ThgGdw?rel=0&modestbranding=1"
+          title="Saneh Lata — Introduction"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:10px;display:block;">
+        </iframe>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -508,19 +541,22 @@ h1 em { font-style: italic; color: var(--teal); }
       </div>
     </div>
 
-    <!-- MLFLOW -->
-    <div class="proj-card">
+    <!-- AI ONBOARDING BUDDY -->
+    <div class="proj-card featured">
       <div class="proj-top">
-        <div class="proj-icon" style="background:#fdf6e3;">📊</div>
-        <span class="proj-badge" style="background:#fdf6e3;color:#8a6d1a;">MLOPS</span>
+        <div class="proj-icon" style="background:#eef2ff;">🤖</div>
+        <span class="proj-badge" style="background:#eef2ff;color:#3730a3;">★ AGENTIC AI · REAL ENTERPRISE INITIATIVE</span>
       </div>
       <div class="proj-body">
-        <h3 class="proj-title">ML Experiment Tracking with MLflow</h3>
-        <p class="proj-desc">Production-grade experiment tracking publishing model metrics, parameters, and artifacts to DagsHub. Demonstrates ML reproducibility and engineering discipline beyond just building models.</p>
-        <div class="proj-stack"><span class="stk">MLflow</span><span class="stk">DagsHub</span><span class="stk">Jupyter</span><span class="stk">Python</span></div>
+        <h3 class="proj-title">AI Onboarding Buddy — Agentic Developer Onboarding System</h3>
+        <p class="proj-desc">Originally initiated as a real AI programme within NatWest's Technology Centre of Excellence using Microsoft Copilot. Rebuilt independently on LangGraph after leaving — extending the original concept into a full production-grade agentic system. A single conversation autonomously raises access tickets, sends DL subscription emails, submits AD group requests, and generates a personalised learning path. Features a 9-node LangGraph state machine, Human-in-the-Loop interrupt workflows, returning-user session continuity, a manager approval portal with SLA countdowns, and full LangSmith observability.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">LangGraph</span><span class="stk">Groq LLaMA 3.3</span><span class="stk">RAG</span><span class="stk">ChromaDB</span><span class="stk">SQLite</span><span class="stk">LangSmith</span><span class="stk">Streamlit</span>
+        </div>
       </div>
       <div class="proj-footer">
-        <a href="https://github.com/SanehLata/mlflow_repo" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="https://github.com/SanehLata/Onboarding_AI_Buddy" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
+        <a href="#" class="plink plink-vid" onclick="event.preventDefault();openVid('onboarding');">🎬 Watch Video</a>
       </div>
     </div>
 
@@ -594,7 +630,7 @@ h1 em { font-style: italic; color: var(--teal); }
       <div class="proj-footer">
         <a href="https://shop-assist-gen-ai-chatbot.streamlit.app" target="_blank" class="plink plink-demo">▶ Live Demo</a>
         <a href="https://github.com/SanehLata/ShopAssist_GenAIChatbot" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
-        <a href="#" class="plink plink-vid" onclick="openVid('shop');return false;">🎬 Watch Video</a>
+        <a href="#" class="plink plink-vid" onclick="event.preventDefault();openVid('shop');">🎬 Watch Video</a>
       </div>
     </div>
 
@@ -727,9 +763,9 @@ h1 em { font-style: italic; color: var(--teal); }
   <p class="section-sub">Open to remote or hybrid roles in AI/ML engineering, technical program management, or AI-focused delivery leadership. Based in Chicago — available nationwide.</p>
   <div class="contact-grid">
     <div class="contact-links">
-      <a href="mailto:latasaneh@gmail.com" class="clink">
+      <a href="/cdn-cgi/l/email-protection#bbd7dacfdac8dad5ded3fbdcd6dad2d795d8d4d6" class="clink">
         <span class="clink-icon">✉️</span>
-        <div><span class="clink-label">Email</span><span class="clink-val">latasaneh@gmail.com</span></div>
+        <div><span class="clink-label">Email</span><span class="clink-val"><span class="__cf_email__" data-cfemail="c7aba6b3a6b4a6a9a2af87a0aaa6aeabe9a4a8aa">[email&#160;protected]</span></span></div>
       </a>
       <a href="tel:+13314318065" class="clink">
         <span class="clink-icon">📞</span>
@@ -768,41 +804,65 @@ h1 em { font-style: italic; color: var(--teal); }
   </div>
 </div>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // ── VIDEO MODAL ──
 const vidData = {
-  repo:   { title:'Repo Trading Settlement Risk Predictor', desc:'ML system predicting settlement risk using XGBoost + SHAP — built on 10+ years of NatWest trading domain expertise.', url:'' },
-  credit: { title:'Credit Scoring & Loan Default Prediction', desc:'End-to-end walkthrough: EDA, feature engineering, model training, and the live Streamlit approve/reject app.', url:'' },
-  health: { title:'Healthcare Insurance Premium Prediction', desc:'Full ML pipeline from raw data through EDA, feature engineering, model selection, and Streamlit deployment.', url:'' },
-  vehicle:{ title:'Vehicle Damage Detection (Deep Learning)', desc:'CNN + ResNet transfer learning — upload any vehicle image and get instant damage classification.', url:'' },
-  shop:   { title:'ShopAssist — Gen AI E-Commerce Chatbot', desc:'Semantic routing chatbot demo: watch it intelligently route small talk, FAQ queries, and product search requests to the right pipeline in real time.', url:'' },
-  rag:    { title:'Web Intel AI — RAG Application', desc:'Full walkthrough: paste a URL, watch the ingestion pipeline chunk and embed it, then ask natural language questions and get cited answers from the content.', url:'' }
+  repo:       { title:'Repo Trading Settlement Risk Predictor', desc:'ML system predicting settlement risk using XGBoost + SHAP — built on 10+ years of NatWest trading domain expertise.', url:'' },
+  onboarding: { title:'AI Onboarding Buddy — Agentic Developer Onboarding System', desc:'Full walkthrough of the agentic onboarding system: watch the LangGraph state machine raise tickets, send emails, manage HITL workflows, and generate personalised learning paths in real time.', url:'https://youtu.be/xvcjnNP_L8k' },
+  credit:     { title:'Credit Scoring & Loan Default Prediction', desc:'End-to-end walkthrough: EDA, feature engineering, model training, and the live Streamlit approve/reject app.', url:'' },
+  health:     { title:'Healthcare Insurance Premium Prediction', desc:'Full ML pipeline from raw data through EDA, feature engineering, model selection, and Streamlit deployment.', url:'' },
+  vehicle:    { title:'Vehicle Damage Detection (Deep Learning)', desc:'CNN + ResNet transfer learning — upload any vehicle image and get instant damage classification.', url:'' },
+  shop:       { title:'ShopAssist — Gen AI E-Commerce Chatbot', desc:'Semantic routing chatbot demo: watch it intelligently route small talk, FAQ queries, and product search requests to the right pipeline in real time.', url:'https://youtu.be/DdEllaRWPAA' },
+  rag:        { title:'Web Intel AI — RAG Application', desc:'Full walkthrough: paste a URL, watch the ingestion pipeline chunk and embed it, then ask natural language questions and get cited answers from the content.', url:'' }
 };
+
+function getYouTubeId(url) {
+  if (url.includes('youtu.be/')) return url.split('youtu.be/')[1].split(/[?&]/)[0];
+  try { return new URL(url).searchParams.get('v'); } catch(e) { return null; }
+}
+
 function openVid(k) {
   const v = vidData[k];
+  if (!v) return;
   document.getElementById('vid-title').textContent = v.title;
   document.getElementById('vid-desc').textContent  = v.desc;
   const el = document.getElementById('vid-embed');
-  if (v.url) {
-    if (v.url.includes('youtu')) {
-      const id = v.url.includes('youtu.be') ? v.url.split('/').pop().split('?')[0] : new URL(v.url).searchParams.get('v');
-      el.innerHTML = `<iframe width="100%" style="aspect-ratio:16/9;border-radius:10px;border:none" src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>`;
-    } else if (v.url.includes('loom.com')) {
-      const id = v.url.split('/').pop().split('?')[0];
-      el.innerHTML = `<iframe width="100%" style="aspect-ratio:16/9;border-radius:10px;border:none" src="https://www.loom.com/embed/${id}" allowfullscreen></iframe>`;
-    } else {
-      el.innerHTML = `<video width="100%" style="border-radius:10px" controls><source src="${v.url}"></video>`;
-    }
+  if (v.url && v.url.includes('youtu')) {
+    const id = getYouTubeId(v.url);
+    const thumb = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
+    el.innerHTML =
+      '<a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener" style="display:block;position:relative;border-radius:12px;overflow:hidden;cursor:pointer;text-decoration:none;background:#1a1a2e;">' +
+        '<img src="' + thumb + '" alt="Video thumbnail" loading="eager" fetchpriority="high" onload="this.style.opacity=1" style="width:100%;display:block;border-radius:12px;opacity:0;transition:opacity 0.25s ease;">' +
+        '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);border-radius:12px;gap:10px;">' +
+          '<div style="width:64px;height:64px;background:#ff0000;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.4);">' +
+            '<svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;margin-left:4px;"><polygon points="5,3 19,12 5,21"/></svg>' +
+          '</div>' +
+          '<span style="color:white;font-size:0.82rem;font-weight:600;letter-spacing:0.05em;background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:20px;">Watch on YouTube ↗</span>' +
+        '</div>' +
+      '</a>';
+  } else if (v.url && v.url.includes('loom.com')) {
+    const id = v.url.split('/').pop().split('?')[0];
+    el.innerHTML = '<iframe width="100%" style="aspect-ratio:16/9;border-radius:10px;border:none" src="https://www.loom.com/embed/' + id + '" allowfullscreen></iframe>';
+  } else if (v.url) {
+    el.innerHTML = '<video width="100%" style="border-radius:10px" controls><source src="' + v.url + '"></video>';
   } else {
-    el.innerHTML = `<div class="vid-placeholder"><div class="play">▶</div><p>Video coming soon — recording in progress</p></div>`;
+    el.innerHTML = '<div class="vid-placeholder"><div class="play">▶</div><p>Video coming soon — recording in progress</p></div>';
   }
   document.getElementById('vidModal').classList.add('open');
 }
+
 function closeVid() {
   document.getElementById('vidModal').classList.remove('open');
   document.getElementById('vid-embed').innerHTML = '';
 }
-document.getElementById('vidModal').addEventListener('click', e => { if (e.target.id === 'vidModal') closeVid(); });
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('vidModal').addEventListener('click', function(e) {
+    if (e.target.id === 'vidModal') closeVid();
+  });
+});
+</script>
 
 // ── EXPERIENCE TABS ──
 function showExp(id, el) {
@@ -890,13 +950,4 @@ Return pure JSON only — no markdown, no explanation.`,
     document.getElementById('edit-box').value = '';
   } catch(e) {
     status.textContent = '✗ ' + (e.message || 'Error. Try rephrasing.');
-    status.className = 'ep-status err';
-  } finally {
-    btn.disabled = false;
-    thinking.classList.remove('show');
-  }
-}
-document.getElementById('edit-box').addEventListener('keydown', e => { if (e.ctrlKey && e.key==='Enter') doEdit(); });
-</script>
-</body>
-</html>
+    status.className = 'ep-
