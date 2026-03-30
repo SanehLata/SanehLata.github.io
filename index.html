@@ -308,7 +308,7 @@ h1 em { font-style: italic; color: var(--teal); }
   .nav-links { display: none; }
   #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 72px; }
   .hero-left { padding: 3rem 1.5rem; }
-  .hero-right { display: flex; flex-direction: column; gap: 1.25rem; padding: 0 1.5rem 3rem; }
+  .hero-right { display: none; }
   .section { padding: 3.5rem 1.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .proj-grid { grid-template-columns: 1fr; }
@@ -960,4 +960,14 @@ async function doEdit() {
     status.textContent = '✓ Done!';
     status.className = 'ep-status ok';
     document.getElementById('edit-box').value = '';
-  } cat
+  } catch(e) {
+    status.textContent = '✗ ' + (e.message || 'Error. Try rephrasing.');
+    status.className = 'ep-status err';
+  } finally {
+    btn.disabled = false;
+    thinking.classList.remove('show');
+  }
+}
+</script>
+</body>
+</html>
