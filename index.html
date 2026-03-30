@@ -308,7 +308,7 @@ h1 em { font-style: italic; color: var(--teal); }
   .nav-links { display: none; }
   #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 72px; }
   .hero-left { padding: 3rem 1.5rem; }
-  .hero-right { display: flex; flex-direction: column; gap: 1.25rem; padding: 0 1.5rem 3rem; }
+  .hero-right { display: none; }
   .section { padding: 3.5rem 1.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .proj-grid { grid-template-columns: 1fr; }
@@ -777,7 +777,7 @@ h1 em { font-style: italic; color: var(--teal); }
     <div class="contact-links">
       <div class="clink">
         <span class="clink-icon">✉️</span>
-        <div><span class="clink-label">Email</span><span class="clink-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5b6aba0ada1a0ada8acb2a4a985a2a8a4aca9eba6aaa8">[email&#160;protected]</a></span></div>
+        <div><span class="clink-label">Email</span><span class="clink-val">snehdehmiwal@gmail.com</span></div>
       </div>
       <div class="clink">
         <span class="clink-icon">📞</span>
@@ -816,7 +816,7 @@ h1 em { font-style: italic; color: var(--teal); }
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // ── VIDEO MODAL ──
 const vidData = {
@@ -960,4 +960,14 @@ async function doEdit() {
     status.textContent = '✓ Done!';
     status.className = 'ep-status ok';
     document.getElementById('edit-box').value = '';
-  } cat
+  } catch(e) {
+    status.textContent = '✗ ' + (e.message || 'Error. Try rephrasing.');
+    status.className = 'ep-status err';
+  } finally {
+    btn.disabled = false;
+    thinking.classList.remove('show');
+  }
+}
+</script>
+</body>
+</html>
