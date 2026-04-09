@@ -393,7 +393,7 @@ h1 em { font-style: italic; color: var(--teal); }
     <div class="stats-row">
       <div><span class="stat-num">10+</span><span class="stat-label">Years in FinTech</span></div>
       <div><span class="stat-num">$27M</span><span class="stat-label">Cost Savings Led</span></div>
-      <div><span class="stat-num">7</span><span class="stat-label">AI/ML Projects</span></div>
+      <div><span class="stat-num">8</span><span class="stat-label">AI/ML Projects</span></div>
       <div><span class="stat-num">100+</span><span class="stat-label">Engineers Mentored</span></div>
     </div>
   </div>
@@ -567,6 +567,24 @@ h1 em { font-style: italic; color: var(--teal); }
         <a href="#" class="plink plink-vid" onclick="event.preventDefault();openVid('onboarding');">🎬 Watch Video</a>
         <a href="https://github.com/SanehLata/Onboarding_AI_Buddy" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
         <a href="https://new-joiner-in-team-ai-buddy.streamlit.app/" target="_blank" class="plink plink-demo">▶ Live Demo <span style="font-size:0.72rem;opacity:0.85;">(~30s to load)</span></a>
+      </div>
+    </div>
+	
+    <!-- NEW: IT HELPDESK AGENT — AWS BEDROCK AGENTCORE -->
+    <div class="proj-card featured">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:#f0fdf4;">🖥️</div>
+        <span class="proj-badge" style="background:#f0fdf4;color:#166534;">★ AGENTIC AI · AWS BEDROCK AGENTCORE · CLOUD DEPLOYED</span>
+      </div>
+      <div class="proj-body">
+        <h3 class="proj-title">Enterprise IT Helpdesk Agent — AWS Bedrock AgentCore</h3>
+        <p class="proj-desc">A production-grade agentic AI system deployed on Amazon Bedrock AgentCore that autonomously handles enterprise IT helpdesk queries across 49 real scenarios — trading system access, security incidents, P1 incident management, and more. Built in three progressive stages: local LangChain RAG agent → cloud-deployed AgentCore runtime with REST API invocation → advanced memory-enabled agent with persistent cross-session user preferences. Knowledge base stored and retrieved from Amazon S3 with FAISS index built dynamically at runtime. Designed S3 event-driven index rebuild pattern for live knowledge base updates.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">LangChain Agents</span><span class="stk">Amazon Bedrock AgentCore</span><span class="stk">Amazon S3</span><span class="stk">FAISS</span><span class="stk">RAG</span><span class="stk">HuggingFace</span><span class="stk">Groq</span><span class="stk">AWS</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/SanehLata/it-helpdesk-agent-bedrock-agentcore" target="_blank" class="plink plink-gh">&lt;/&gt; GitHub</a>
       </div>
     </div>
 
@@ -852,6 +870,7 @@ h1 em { font-style: italic; color: var(--teal); }
 const vidData = {
   repo:       { title:'Repo Trading Settlement Risk Predictor', desc:'ML system predicting settlement risk using XGBoost + SHAP — built on 10+ years of NatWest trading domain expertise.', url:'' },
   onboarding: { title:'AI Onboarding Buddy — Agentic Developer Onboarding System', desc:'Full walkthrough of the agentic onboarding system: watch the LangGraph state machine raise tickets, send emails, manage HITL workflows, and generate personalised learning paths in real time.', url:'https://youtu.be/xvcjnNP_L8k' },
+  helpdesk:   { title:'Enterprise IT Helpdesk Agent — AWS Bedrock AgentCore', desc:'Three-stage agentic AI system deployed on Amazon Bedrock AgentCore — LangChain RAG agent with Amazon S3 knowledge base, REST API deployment, and persistent cross-session memory for enterprise IT support.', url:'' },  
   credit:     { title:'Credit Scoring & Loan Default Prediction', desc:'End-to-end walkthrough: EDA, feature engineering, model training, and the live Streamlit approve/reject app.', url:'' },
   health:     { title:'Healthcare Insurance Premium Prediction', desc:'Full ML pipeline from raw data through EDA, feature engineering, model selection, and Streamlit deployment.', url:'' },
   vehicle:    { title:'Vehicle Damage Detection (Deep Learning)', desc:'CNN + ResNet transfer learning — upload any vehicle image and get instant damage classification.', url:'' },
